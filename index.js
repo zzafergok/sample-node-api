@@ -11,6 +11,8 @@ const isLoggedIn = true;
 app.use(bodyParser.json());
 app.use(cors());
 
+const port = process.env.PORT || 5000;
+
 mongoose.connect(
   `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.s8xtto2.mongodb.net/?retryWrites=true&w=majority`,
   (e) => {
@@ -36,6 +38,6 @@ app.get("/", (req, res) => {
 
 app.use("/users", usersRouter);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(port, () => {
+  console.log("Server is running on port" + port);
 });
