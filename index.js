@@ -6,8 +6,6 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const isLoggedIn = true;
-
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -23,14 +21,6 @@ mongoose.connect(
     }
   }
 );
-
-app.use((req, res, next) => {
-  if (!isLoggedIn) {
-    res.send("You are not logged in");
-  } else {
-    next();
-  }
-});
 
 app.get("/", (req, res) => {
   res.send("Home Page");
